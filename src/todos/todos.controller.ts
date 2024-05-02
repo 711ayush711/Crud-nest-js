@@ -9,13 +9,18 @@ import {
 } from '@nestjs/common';
 import { TodoService } from './todos.service';
 import { TodoType } from './types/todo.types';
+import { LoggerService } from 'src/services/looger.service';
 
 @Controller('api')
 export class TodoController {
-  constructor(private todoService: TodoService) {}
+  constructor(
+    private todoService: TodoService,
+    private loggerService: LoggerService,
+  ) {}
 
   @Get('/allTodo')
   allTodos(): Promise<TodoType[]> {
+    this.loggerService.log('Get all task');
     return this.todoService.getTodo();
   }
 
