@@ -26,6 +26,7 @@ export class TodoController {
 
   @Post('/addTodo')
   addTodo(@Body() todo: TodoType): Promise<TodoType> {
+    this.loggerService.log('Add task');
     return this.todoService.createTodo(todo);
   }
 
@@ -34,11 +35,13 @@ export class TodoController {
     @Param('id') id: string,
     @Body() newTodo: TodoType,
   ): Promise<TodoType> {
+    this.loggerService.log('Update task');
     return this.todoService.updateTodo(+id, newTodo);
   }
 
   @Delete('/deleteTodo/:id')
   deleteTodo(@Param('id') id: string): Promise<TodoType> {
+    this.loggerService.log('Delete task');
     return this.todoService.deleteTodo(+id);
   }
 }
