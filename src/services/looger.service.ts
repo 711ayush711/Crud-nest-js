@@ -19,15 +19,6 @@ export class LoggerService {
         }),
       ],
     });
-    // this.logger = winston.createLogger({
-    //   level: 'info',
-    //   transports: [
-    //     new transports.File({
-    //       filename: 'logs/request.log',
-    //       format: format.combine(format.timestamp(), format.json()),
-    //     }),
-    //   ],
-    // });
   }
 
   log(message: string, context?: string) {
